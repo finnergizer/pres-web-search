@@ -88,7 +88,7 @@ class: center, middle
 
 - Results from each query are compared to the results from the control 
 
-![Browser Cookies Results](images/browser-cookies-results.png)
+.center[![Browser Cookies Results](images/browser-cookies-results.png)]
 
 - **Results provided do not change, but order does**
 	- Logged in users with cookies experience an average reordering of 2 in their search results
@@ -100,7 +100,7 @@ class: center, middle
 - 10 different accounts each forwarding their Google Search requests to **remote machines in 10 different states**
 	- Control: Account forwarding to Massachusetts
 
-![Ip Geolocation Results](images/ip-geolocation-results.png)
+.center[![Ip Geolocation Results](images/ip-geolocation-results.png)]
 
 - Average Jacard Index ~ 0.9
 	- 1 **difference** in search results vs. control
@@ -124,14 +124,14 @@ Example:
 
 - Google Account Attributes (Gender & Age)	
 
-![Gender Results](images/gender-results.png)
+.center[![Gender Results](images/gender-results.png)]
 
 - Search History
 	- 20 accounts specified a demographic attribute (E.g. income level)
 	- Before executing the 120 test queries, each account searches 100 queries that individuals in that demographic usually search for
 
 
-![Seach History Income Level Demographics](images/seach-history-income-level-demographics.png)
+.center[![Seach History Income Level Demographics](images/seach-history-income-level-demographics.png)]
 
 - Search-Result-Click History, Browsing History
 
@@ -158,7 +158,7 @@ Example:
 
 - Plot the cumulative distribution function of the Jacard Index and Edit Distance for all categories across all experiments
 
-![Cdf Query Categories](images/cdf-query-categories.png)
+.center[![Cdf Query Categories](images/cdf-query-categories.png)]
 
 - For example, _Queries relating to **politics** are more likely to produce personalized results than **"what is..."** queries_
 
