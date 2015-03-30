@@ -1,11 +1,205 @@
+class: center, middle
+#Measuring Personalization of Web Search
+##[Paper](http://www.ccs.neu.edu/home/cbw/pdf/fp039-hannak.pdf) by Hannak et al.
+
+###Presented by 
+<img src="images/dipin.png" width="300"  alt="Dipin">
+
+<img src="images/shaughn.png" width="400" alt="Shaughn">
+
+[shaughn.net/pres-web-search](http://shaughn.net/pres-web-search)
+
+---
+
+#Introduction - What is Personalization?
+
+- Web page results according to .em[individual's characteristics] (interests, location, context etc.)
+
+- Bing and Google Search personalize search results for all users
+	- Google Search alone receives 17 billion queries per month from U.S. users
+
+- eBay, Amazon customize .em[recommended products] for different users
+
+- Recently, Google started including personalized content from the Google+ social network into search results
+
+- Personalization provides obvious benefits to users, including .em[clarity and retrieval of locally relevant results] E.g. boston pizza
+
+---
+
+#Introduction - Filter Bubble Effect
+
+- A result of a personalized search where a website algorithm .em[selectively guesses what information] a user would like to see
+
+- Users only given results that the .em[personalization algorithm thinks] they want based location, past click behaviour, search history etc. 
+
+	- .em[Separated] from information disagreeing with their viewpoints
+	- Isolating them in their own cultural or ideological bubbles
+
+Basic examples of filter bubble effect :
+
+- Google Personalized Search 
+- Facebook's personalized news stream
+
+*Increased popularity of .em[alternative search engines] that do not personalize results (e.g., duckduckgo.com) due to concerns of Filter Bubble Effect.*
+
+---
+
+#Contributions - Overview
+
+1. Developed a .em[methodology] for measuring personalization in Web search results
+
+	- Created a command line-based implementation 
+
+2. Used this methodology to measure the .em[extent of personalization] on Google Web Search
+	
+	- Recruited 200 users with active Google accounts 
+	- Ran a predefined list of Web searches  
+	- Measured the differences in search results
+
+3. Investigated the .em[causes] of personalization, covering *user-provided profile information, web browser and operating system choice, search history, search-result-click history, and browsing history.* 
+	
+	- Created numerous Google accounts and assigned each a set of unique behaviors
+
+
+---
+
+#Background -  Google Personalization
+ 
+- Google first introduced “Personalized Search” in 2004
+	- Merged into Google Search in 2005
+	- In 2009, Google began personalizing search results for all users, even those without Google accounts
+
+- Personalizes results based on the .em[user’s language, geolocation, history of search queries, and their    Google+ social connections]
+
+- Today, Google Accounts are the single point of login for all Google services
+	- Google Accounts: A tracking cookie enables all of Google’s services to uniquely identify each logged in user
+	- Large advertising networks: Google is capable of tracking users as they browse the Web due to their large advertising networks
+
+**.em[Motivation]**: Very little concrete information published about how Google personalizes search results
+
+
+---
+
+#Terminology & Notions
+
+
+<img src="images/search-results.png" width="300" style="margin-left: 20px; float:right" alt="Search Results">
+
+- Query: one or more keywords
+
+- Result: response to a query
+
+- Primary Link: main link in a result
+	- Organic: pointing to a third party website eg. WebMD link
+	
+	- Primary link may point to another Google service too. eg. “News for coughs” 
+
+	- Some do not include a primary link e.g. “The Related Searches result “
+
+
+---
+
+#Experiment Design
+
+Each experiment follows a similar pattern: 
+
+1. Create `\(x\)` Google accounts that each vary by one specific feature (some without Google accounts).
+
+2. Execute `\(q\)` identical queries from each account, once per day for `\(d\)` days. 
+
+3. Save the results of each query
+
+4. Compare the results of the queries to determine whether the .em[same] results are being served in the .em[same order] to each account. 
+	- If the results vary between accounts, then the changes can be attributed to personalization linked to the given experimental feature.  
+
+---
+
+#Noise in Search Results
+
+When developing the method, authors had to be aware of the noise:
+
+- .em[Updating the search index]: query results may change over time
+
+- .em[Distributed Infrastructure]: different datacenters may house different indexes with inconsistencies,  provding different results. 
+
+- .em[Geolocation]: IP address used to provide localized results 
+	- different subnets may receive different results
+
+- .em[A/B Testing]: certain results are altered to measure whether users click on them more often. 
+	
+
+???
+
+Distributed Infrastructure: It is likely that these diﬀerences arise due to inconsistencies in the search index across datacenters.
+
+---
+
+# Noise: Carry-Over Effect
+
+One particular source of noise comes from the influence of one search on subsequent searches:
+
+<img src="images/carry-over-effect.png" width="300" height="252" style="float: right; margin-left:20px" alt="Carry Over Effect">
+
+- A user searches for query A, followed by query B. Query A influences the results of Query B.
+	- E.g. Searching for *hawaii*, followed by *urban outfitters*
+
+Testing Carry-Over:
+
+- In two different browsers, execute first query in one browser, followed by second query at later time
+
+???
+
+
+---
+
+#Testing Carry-Over
+
+.center[![Carry Over Test](images/carry-over-test.png)]
+
+- Overlap of results when searching for "test" followed by "touring" compared to just "touring"
+
+- Jacard Index of 1 indicates complete similarity
+	- When searching "touring" 10 minutes after searching "test", result set is completely similar to searching "touring" on its own
+
+.em[**The remaining tests measuring personalization all ensured queries were executed 10 minutes apart**]
+
+---
+
+#Controlling Noise
+
+1. All queries are executed from Google Search .em[webpage] vs. Google’s API
+
+2. All machines execute searches for the same query at the same time
+	- This eliminates differences is query results due to .em[temporal effects]
+
+3. Use static DNS entries to direct all of their query traffic to a specific Google IP
+	- This eliminates errors arising from differences between .em[data centers].
+
+4. They wait 11 minutes in-between subsequent queries to avoid .em[carry-over]
+
+5. They send all of the search queries for a given experiment from the same subnet.
+	- avoiding noise from .em[geolocation]
+
+6. Sixth, they include a .em[control account] in each of their experiments
+	- control is identical to one other account in given experiment
+
+???
+
+In order to control against the noise factors that they identified, the methodology was modified in the following ways:
+
+	- The control account is configured in an identical manner to other account in the given experiment    
+	- duplicate of one account in the set of `\(x\)` accounts and ensure that the duplicates retrieve the same results
+
+---
+
 # Demonstrating Real-World Personalization
 
 - Begin by measuring the extent of personalization that typical users see today as a baseline
 
-	- 200 Amazon Mechanical Turk Workers that use various Google Services visited a site that automatically searched 80 queries from randomly selected, but diverse categories
+	- 200 users on various Google Services visited a site that automatically searched 80 queries from randomly selected, but diverse categories
 	- Tech, News, Lifestyle, Quirky, Humanities, Science
 
-- Searches executed via proxy to provide:
+- Searches executed via .em[proxy] to provide:
 	1. A PhantomJS script to run the same query as a "control" user
 
 	2. User queries and control queries are executed in parallel
@@ -37,13 +231,17 @@ Proxy Benefits:
 
 .center[<img align="middle" src="images/figure-5-amt-personalization-original.png" width="500" alt="Figure 5 Amt Personalization Original">]
 
-- Compared to control results, user results observed a significant difference.
+- Extensive personalization of search results observed. 
+	- Real-world user results showed an .em[11.7% higher] likelihood of personalization
+	
+- Top ranks tend to be .em[less personalized] than bottom ranks.
 
 ???
 
 - Compared user results to control results, and control results to each other.
 	- Intuitively, the change between control results is simply baseline noise from updating search index, distributed data centers, geolocation, A/B testing, carry-over effect
 	- On average, users showed and 11.7% higher likelihood of differing from the control than the control results differing from each other
+
 
 ---
 
@@ -74,10 +272,14 @@ After observing that it web searches are clearly personalized from the AMT worke
 
 - Unique IP addresses within \24 subnet
 	- IP addresses are unique, but will not be affected by geolocation noise
----
+
+---  
+
+
+
 
 class: center, middle
-.center[![Table 3 Features Evaluated](images/table-3-features-evaluated.png)]
+.center[![Table 3 Features Evaluated](images/table-3-features-evaluated.png)] -->
 
 ---
 
@@ -245,6 +447,10 @@ The authors provide a stepping stone to investigating more areas of web search p
 - Investigating beyond accounts in the US
 - Investigating more features that could contribute to personalization 
 
+---
 
+class: center, middle
+#Thank You!
+##Questions
 
 

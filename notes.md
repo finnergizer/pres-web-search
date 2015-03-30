@@ -1,3 +1,4 @@
+
 #Tracking Techniques By Google
 - Google Accounts
 	- once logged into Google services, tracking cookie enables all of Google's services to uniquely identify each logged in user
