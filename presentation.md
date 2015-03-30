@@ -271,15 +271,49 @@ After observing that it web searches are clearly personalized from the AMT worke
 - 120 queries are categorically diverse
 
 - Unique IP addresses within \24 subnet
-	- IP addresses are unique, but will not be affected by geolocation noise
+	- IP addresses are unique, but will not be affected by geolocation noise  
 
----  
-
-
-
+---
 
 class: center, middle
-.center[![Table 3 Features Evaluated](images/table-3-features-evaluated.png)] -->
+
+#Features Evaluated
+
+<img src="images/table-3-features-evaluated.png" width="600" alt="Table 3 Features Evaluated">
+---
+
+#Similarity Metrics
+
+.em[Jacard Index]: `\(J(A,B) = {{\vert{A \cap B}\vert}\over{\vert{A \cup B}\vert}}\)`
+
+Given: 
+<div style="display: inline-block; width:50%">
+\(A\)= {a.com, b.com, c.com}
+<br>
+\(B\)= {b.com, c.com, d.com}
+</div>
+<div style="display: inline-block; width:49%">
+\(A \cap B\) = {b.com, c.com}
+<br>
+\(A \cup B\) = {a.com, b.com, c.com, d.com}
+</div>
+
+$$J(A,B) = {{\vert{A \cap B}\vert}\over{\vert{A \cup B}\vert}} = {2 \over 4} = 0.5$$
+
+.em[Edit Distance]:
+- Number of insertions, deletions, substitutions, swaps required to match two sets
+	- `\(EditDistance(\text{{a.com, b.com, c.com}}, \text{{c.com, b.com}}) = 2 \)`
+
+???
+
+- Jacard Index of 1 indicates the intersection is equal to the union.
+	- Sets are completely identical
+- Jacard index of 0 indicates the intersection contains no elements
+	- Sets are completely dissimilar
+	
+- Edit distance
+	- Second set requires the addition of a.com, followed by the swap of c.com and b.com
+	- 2 operations
 
 ---
 
