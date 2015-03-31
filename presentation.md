@@ -491,4 +491,9 @@ class: center, middle
 #Thank You!
 ##Questions
 
+---
+
+class: center, middle
+
+<img src="images/references.png" height="600" alt="References">
 
