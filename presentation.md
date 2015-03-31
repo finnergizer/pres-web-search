@@ -20,9 +20,12 @@ class: center, middle
 
 - eBay, Amazon customize .em[recommended products] for different users
 
-- Recently, Google started including personalized content from the Google+ social network into search results
+<!-- - Recently, Google started including personalized content from the Google+ social network into search results -->
 
 - Personalization provides obvious benefits to users, including .em[clarity and retrieval of locally relevant results] E.g. boston pizza
+
+- In 2009, Google began personalizing search results for all users, even those without Google accounts
+	- Personalizes results based on the .em[user’s language, geolocation, history of search queries, and their Google+ social connections]
 
 ---
 
@@ -63,8 +66,8 @@ Basic examples of filter bubble effect :
 
 ---
 
-#Background -  Google Personalization
- 
+<!-- #Background -  Google Personalization
+
 - Google first introduced “Personalized Search” in 2004
 	- Merged into Google Search in 2005
 	- In 2009, Google began personalizing search results for all users, even those without Google accounts
@@ -78,9 +81,9 @@ Basic examples of filter bubble effect :
 **.em[Motivation]**: Very little concrete information published about how Google personalizes search results
 
 
----
+--- -->
 
-#Terminology & Notions
+<!-- #Terminology & Notions
 
 
 <img src="images/search-results.png" width="300" style="margin-left: 20px; float:right" alt="Search Results">
@@ -91,13 +94,13 @@ Basic examples of filter bubble effect :
 
 - Primary Link: main link in a result
 	- Organic: pointing to a third party website eg. WebMD link
-	
-	- Primary link may point to another Google service too. eg. “News for coughs” 
+
+	- Primary link may point to another Google service too. eg. “News for coughs”
 
 	- Some do not include a primary link e.g. “The Related Searches result “
 
 
----
+--- -->
 
 #Experiment Design
 
@@ -243,7 +246,7 @@ Proxy Benefits:
 	- On average, users showed and 11.7% higher likelihood of differing from the control than the control results differing from each other
 
 
----
+<!-----
 
 #What Causes Personalization?
 
@@ -271,7 +274,7 @@ After observing that it web searches are clearly personalized from the AMT worke
 - 120 queries are categorically diverse
 
 - Unique IP addresses within \24 subnet
-	- IP addresses are unique, but will not be affected by geolocation noise  
+	- IP addresses are unique, but will not be affected by geolocation noise -->
 
 ---
 
@@ -280,6 +283,7 @@ class: center, middle
 #Features Evaluated
 
 <img src="images/table-3-features-evaluated.png" width="600" alt="Table 3 Features Evaluated">
+
 ---
 
 #Similarity Metrics
