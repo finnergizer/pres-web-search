@@ -13,19 +13,19 @@ class: center, middle
 
 #Introduction - What is Personalization?
 
-- Web page results according to .em[individual's characteristics] (interests, location, context etc.)
+- Web page results according to .blue[individual's characteristics] (interests, location, context etc.)
 
-- Bing and Google Search personalize search results for all users
+- .blue[Bing and Google Search] personalize search results for all users
 	- Google Search alone receives 17 billion queries per month from U.S. users
 
-- eBay, Amazon customize .em[recommended products] for different users
+- eBay, Amazon customize .blue[recommended products] for different users
 
 <!-- - Recently, Google started including personalized content from the Google+ social network into search results -->
 
-- Personalization provides obvious benefits to users, including .em[clarity and retrieval of locally relevant results] E.g. boston pizza
+- Personalization provides obvious benefits to users, including .blue[clarity and retrieval of locally relevant results] E.g. boston pizza
 
 - In 2009, Google began personalizing search results for all users, even those without Google accounts
-	- Personalizes results based on the .em[user’s language, geolocation, history of search queries, and their Google+ social connections]
+	- Personalizes results based on the .blue[user’s language, geolocation, history of search queries, and their Google+ social connections]
 
 ---
 
@@ -144,7 +144,7 @@ One particular source of noise comes from the influence of one search on subsequ
 <img src="images/carry-over-effect.png" width="300" height="252" style="float: right; margin-left:20px" alt="Carry Over Effect">
 
 - A user searches for query A, followed by query B. Query A influences the results of Query B.
-	- E.g. Searching for *hawaii*, followed by *urban outfitters*
+	- .blue[E.g. Searching for *hawaii*, followed by *urban outfitters*]
 
 Testing Carry-Over:
 
